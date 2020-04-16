@@ -1,13 +1,7 @@
-/* eslint-disable no-plusplus */
-import $ from 'jquery';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './style.scss';
 
-let num = 0;
+const App = () => <div className="test">All the REACT are belong to us!</div>;
 
-setInterval(() => {
-  num++;
-  $('#main').html(`You've been on this page for ${num} seconds.`);
-}, 1000);
-
-
-$('#main').html(`You've been on this page for ${num} seconds.`);
+ReactDOM.render(<App />, document.getElementById('main'));
