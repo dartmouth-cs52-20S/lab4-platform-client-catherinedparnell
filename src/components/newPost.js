@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import DoneIcon from '@material-ui/icons/Done';
 import TextField from '@material-ui/core/TextField';
 import { createPost } from '../actions';
 
@@ -58,7 +59,7 @@ class NewPost extends Component {
             variant="outlined"
             onChange={this.onInputChangeTitle}
           />
-          <i className="fas fa-check" onClick={this.onClickNewPost} />
+          <DoneIcon onClick={this.onClickNewPost} />
         </div>
         <TextField
           id="outlined-url-input"
