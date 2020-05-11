@@ -15,6 +15,7 @@ import { NavLink, Route, Switch } from 'react-router-dom';
 import Posts from './posts';
 import NewPost from './newPost';
 import Post from './post';
+import FilteredPosts from './filteredPosts';
 
 
 const drawerWidth = 240;
@@ -81,6 +82,8 @@ export default function navBar() {
           <Route exact path="/" component={Posts} />
           <Route path="/posts/new" component={NewPost} />
           <Route path="/posts/:postID" component={Post} />
+          <Route path="/filter/posts/:postID" component={Post} />
+          <Route path="/filter/:tag" component={FilteredPosts} />
           <Route render={() => (<div>post not found </div>)} />
         </Switch>
       </main>

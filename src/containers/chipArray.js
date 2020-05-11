@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 // import Paper from '@material-ui/core/Paper';
@@ -32,6 +33,8 @@ export default function ChipArray({ tags }) {
               className={classes.chip}
               id="chip"
               color="primary"
+              component={NavLink}
+              to={`/filter/${data}`}
             />
           </li>
         );

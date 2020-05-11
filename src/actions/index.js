@@ -8,6 +8,7 @@ const ROOT_URL = 'http://localhost:9090/api';
 export const ActionTypes = {
   FETCH_POSTS: 'FETCH_POSTS',
   FETCH_POST: 'FETCH_POST',
+  FETCH_TAG: 'FETCH_TAG',
 };
 
 export function fetchPosts() {
@@ -21,6 +22,18 @@ export function fetchPosts() {
         // have an error component somewhere show it
         // dispatch({ type: ActionTypes.ERROR_SET, error });
         // might you also want an ERROR_CLEAR action?
+        console.log(error);
+      });
+  };
+}
+
+export function fetchPostsByTag(tag) {
+  return (dispatch) => {
+    axios.get(`${ROOT_URL}/filter/${tag}`)
+      .then((response) => {
+        dispatch({ type: ActionTypes.FETCH_TAG, payload: response.data });
+      })
+      .catch((error) => {
         console.log(error);
       });
   };
