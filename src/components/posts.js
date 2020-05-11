@@ -26,8 +26,13 @@ class Posts extends Component {
             lg={4}
             xl={3}
           >
-            <Link to={`posts/${post.id}`}>
-              <NewsCard title={post.title} coverurl={post.coverUrl} tags={post.tags} />
+            <Link to={`posts/${post.id}`} style={{ textDecoration: 'none' }}>
+              <NewsCard
+                title={post.title}
+                coverurl={post.coverUrl}
+                date={post.createdAt.substr(0, post.createdAt.indexOf('T'))}
+                summary={post.summary}
+              />
             </Link>
           </Grid>
         ))}

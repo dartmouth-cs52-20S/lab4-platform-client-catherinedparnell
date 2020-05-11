@@ -19,6 +19,7 @@ class NewPost extends Component {
     this.onInputChangeContent = this.onInputChangeContent.bind(this);
     this.onInputChangeTags = this.onInputChangeTags.bind(this);
     this.onInputChangeCoverURL = this.onInputChangeCoverURL.bind(this);
+    this.onInputChangeSummary = this.onInputChangeSummary.bind(this);
     this.onClickNewPost = this.onClickNewPost.bind(this);
   }
 
@@ -38,12 +39,17 @@ class NewPost extends Component {
     this.setState({ coverUrl: event.target.value });
   }
 
+  onInputChangeSummary(event) {
+    this.setState({ summary: event.target.value });
+  }
+
   onClickNewPost() {
     const post = {
       title: this.state.title,
       content: this.state.content,
       tags: this.state.tags,
       coverUrl: this.state.coverUrl,
+      summary: this.state.summary,
     };
     createPost(post, this.props.history);
   }
@@ -59,7 +65,7 @@ class NewPost extends Component {
             variant="outlined"
             onChange={this.onInputChangeTitle}
           />
-          <DoneIcon onClick={this.onClickNewPost} />
+          <DoneIcon className="icon" onClick={this.onClickNewPost} />
         </div>
         <TextField
           id="outlined-url-input"
@@ -67,6 +73,15 @@ class NewPost extends Component {
           defaultValue={this.state.coverUrl}
           variant="outlined"
           onChange={this.onInputChangeCoverURL}
+        />
+        <TextField
+          id="outlined-summary-input"
+          label="Summary"
+          defaultValue={this.state.summary}
+          multiline
+          rows={3}
+          variant="outlined"
+          onChange={this.onInputChangeSummary}
         />
         <TextField
           id="outlined-content-input"

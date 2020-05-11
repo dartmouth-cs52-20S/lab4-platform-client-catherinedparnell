@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-// const ROOT_URL = 'http://localhost:9090/api';
-const ROOT_URL = 'https://platform.cs52.me/api';
-const API_KEY = '?key=c_parnell';
+// const ROOT_URL = 'https://cs52-lab5-cdp.herokuapp.com/api';
+const ROOT_URL = 'http://localhost:9090/api';
+// const ROOT_URL = 'https://platform.cs52.me/api';
+// const API_KEY = '?key=c_parnell';
 
 export const ActionTypes = {
   FETCH_POSTS: 'FETCH_POSTS',
@@ -11,7 +12,7 @@ export const ActionTypes = {
 
 export function fetchPosts() {
   return (dispatch) => {
-    axios.get(`${ROOT_URL}/posts${API_KEY}`)
+    axios.get(`${ROOT_URL}/posts`)
       .then((response) => {
         dispatch({ type: ActionTypes.FETCH_POSTS, payload: response.data });
       })
@@ -26,7 +27,7 @@ export function fetchPosts() {
 }
 
 export function createPost(post, history) {
-  axios.post(`${ROOT_URL}/posts${API_KEY}`, post)
+  axios.post(`${ROOT_URL}/posts`, post)
     .then(() => { history.push('/'); })
     .catch((error) => {
       console.log(error);
@@ -35,7 +36,7 @@ export function createPost(post, history) {
 
 export function updatePost(id, post) {
   return (dispatch) => {
-    axios.put(`${ROOT_URL}/posts/${id}${API_KEY}/`, post)
+    axios.put(`${ROOT_URL}/posts/${id}/`, post)
       .then((response) => {
         dispatch({ type: ActionTypes.FETCH_POST, payload: response.data });
       })
@@ -47,7 +48,7 @@ export function updatePost(id, post) {
 
 export function fetchPost(id) {
   return (dispatch) => {
-    axios.get(`${ROOT_URL}/posts/${id}${API_KEY}/`)
+    axios.get(`${ROOT_URL}/posts/${id}/`)
       .then((response) => {
         dispatch({ type: ActionTypes.FETCH_POST, payload: response.data });
       })
@@ -58,9 +59,11 @@ export function fetchPost(id) {
 }
 
 export function deletePost(id, history) {
-  axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
-    .then(() => { history.push('/'); })
-    .catch((error) => {
-      console.log(error);
-    });
+  return (dispatch) => {
+    axios.delete(`${ROOT_URL}/posts/${id}`)
+      .then(() => { history.push('/'); })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 }

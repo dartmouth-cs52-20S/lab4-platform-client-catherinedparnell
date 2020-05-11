@@ -11,6 +11,8 @@ import TextInfoContent from '@mui-treasury/components/content/textInfo';
 import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
 import { useN01TextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/n01';
 import { useBouncyShadowStyles } from '@mui-treasury/styles/shadow/bouncy';
+// import { Chip } from '@material-ui/core';
+// import ChipArray from './chipArray';
 
 
 const useStyles = makeStyles(() => ({
@@ -22,6 +24,7 @@ const useStyles = makeStyles(() => ({
   },
   content: {
     padding: 24,
+    textDecoration: 'none',
   },
   cta: {
     marginTop: 2,
@@ -29,7 +32,9 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function NewsCard({ title, coverurl, tags }) {
+export default function NewsCard({
+  title, coverurl, date, summary,
+}) {
   const styles = useStyles();
   const mediaStyles = useWideCardMediaStyles();
   const textCardContentStyles = useN01TextInfoContentStyles();
@@ -40,8 +45,9 @@ export default function NewsCard({ title, coverurl, tags }) {
       <CardContent className={styles.content}>
         <TextInfoContent
           classes={textCardContentStyles}
-          overline={tags}
+          overline={date}
           heading={title}
+          body={summary}
         />
         <ExpandMoreIcon color="primary" fullWidth className={styles.cta} />
       </CardContent>

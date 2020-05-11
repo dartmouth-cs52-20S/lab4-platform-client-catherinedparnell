@@ -34,7 +34,11 @@ body, html {
     margin-bottom: 50px;
 }
 #post-buttons {
-    margin-left: 50px;
+    margin-left: 100px;
+    position: relative;
+    bottom: -19px;
+    right: -470px;
+    float: right;
 }
 .container {
     display: flex;
@@ -43,7 +47,9 @@ body, html {
 }
 .post-title {
     font-size: 50px;
-    margin: 50px;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 #post-content{
     margin-left: 50px;
@@ -56,4 +62,18 @@ body, html {
 }
 .input{
     margin-top: 50px;
+}
+#chip {
+    transition: all 0.3s ease 0s;
+}
+#chip:hover {
+    transform: scale(1.07);
+    transition: all 0.3s ease 0s;
+}
+.icon {
+    transition: all 0.3s ease 0s;
+}
+.icon:hover {
+    transform: scale(1.07);
+    transition: all 0.3s ease 0s;
 }
