@@ -115,9 +115,7 @@ export function signinUser(user, history) {
   //  dispatch({ type: ActionTypes.AUTH_USER });
   //  localStorage.setItem('token', response.data.token);
   // on error should dispatch(authError(`Sign In Failed: ${error.response.data}`));
-  console.log('signing in', user);
   return (dispatch) => {
-    console.log('returned dispatch');
     axios.post(`${ROOT_URL}/signin`, user)
       .then((response) => {
         dispatch({ type: ActionTypes.AUTH_USER, payload: user }); // dont think we need payload
@@ -139,12 +137,9 @@ export function signupUser(user, history) {
   //  dispatch({ type: ActionTypes.AUTH_USER });
   //  localStorage.setItem('token', response.data.token);
   // on error should dispatch(authError(`Sign Up Failed: ${error.response.data}`));
-  console.log('posting', user);
   return (dispatch) => {
-    console.log('returned dispatch');
     axios.post(`${ROOT_URL}/signup`, user)
       .then((response) => {
-        console.log('response retrieved');
         dispatch({ type: ActionTypes.AUTH_USER });
         localStorage.setItem('token', response.data.token);
         history.push('/');

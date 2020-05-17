@@ -44,7 +44,6 @@ class SignUp extends Component {
       password: this.state.password,
       authorName: this.state.authorName,
     };
-    console.log('calling signup user action');
     this.props.signupUser(user, this.props.history);
   }
 

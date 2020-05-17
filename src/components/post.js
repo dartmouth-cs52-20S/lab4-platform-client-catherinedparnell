@@ -4,9 +4,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import marked from 'marked';
 import TextField from '@material-ui/core/TextField';
-// import Chip from '@material-ui/core/Chip';
-// import Paper from '@material-ui/core/Paper';
-// import { makeStyles } from '@material-ui/core/styles';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
 import DoneIcon from '@material-ui/icons/Done';
@@ -113,8 +110,6 @@ class Post extends Component {
   }
 
   render() {
-    // console.log(this.props.user, 'props');
-    // console.log(this.props.currentPost, 'post');
     if (!this.props.currentPost.tags) return null;
     if (this.state.is_editing) {
       return (
