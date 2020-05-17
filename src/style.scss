@@ -33,12 +33,20 @@ body, html {
     justify-content: center;
     margin-bottom: 50px;
 }
-#post-buttons {
-    margin-left: 100px;
+#bar {
+    //margin-left: 100px;
+    //position: relative;
+    //bottom: -19px;
+    //right: -470px;
+    //float: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.author {
     position: relative;
-    bottom: -19px;
-    right: -470px;
-    float: right;
+    float: left;
+    text-align: left;
 }
 .container {
     display: flex;
@@ -79,4 +87,7 @@ body, html {
 }
 #chip-tag {
     margin: 30px;
+}
+#tag-array {
+    margin-bottom: 30px;
 }

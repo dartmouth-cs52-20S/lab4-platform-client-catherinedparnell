@@ -81,7 +81,7 @@ class Post extends Component {
       coverUrl: this.state.coverUrl,
       summary: this.state.summary,
     };
-    this.props.updatePost(this.props.match.params.postID, post);
+    this.props.updatePost(this.props.match.params.postID, post, this.props.history);
     this.setState({
       title: '',
       content: '',
@@ -97,7 +97,24 @@ class Post extends Component {
     this.props.deletePost(this.props.match.params.postID, this.props.history);
   }
 
+  // eslint-disable-next-line consistent-return
+  renderButtons() {
+    if (this.props.user) {
+      if (this.props.user.email === this.props.currentPost.author.email) {
+        console.log('i am rendering buttons');
+        return (
+          <div className="post-buttons">
+            <CreateIcon className="icon" onClick={this.editPost} />
+            <DeleteIcon className="icon" onClick={this.deletePost} />
+          </div>
+        );
+      }
+    }
+  }
+
   render() {
+    // console.log(this.props.user, 'props');
+    // console.log(this.props.currentPost, 'post');
     if (!this.props.currentPost.tags) return null;
     if (this.state.is_editing) {
       return (
@@ -158,6 +175,14 @@ class Post extends Component {
             <CreateIcon className="icon" onClick={this.editPost} />
             <DeleteIcon className="icon" onClick={this.deletePost} />
           </div>
+          <div className="author">
+            <div id="name">
+              By: {this.props.currentPost.author.authorName}
+            </div>
+            <div id="username">
+              @{this.props.currentPost.author.username}
+            </div>
+          </div>
           <div className="post-title">{this.props.currentPost.title}</div>
           <div className="container">
             <img id="post-img" src={this.props.currentPost.coverUrl} alt="alt-cover-url" />
@@ -166,15 +191,23 @@ class Post extends Component {
         </div>
       );
     } else {
-      console.log(this.props.currentPost.tags[0]);
       return (
         <div className="individual-post">
-          <div id="post-buttons">
-            <CreateIcon className="icon" onClick={this.editPost} />
-            <DeleteIcon className="icon" onClick={this.deletePost} />
+          <div id="bar">
+            <div className="author">
+              <div id="name">
+                By: {this.props.currentPost.author.authorName}
+              </div>
+              <div id="username">
+                @{this.props.currentPost.author.username}
+              </div>
+            </div>
+            {this.renderButtons()}
           </div>
           <div className="post-title">{this.props.currentPost.title}</div>
-          <ChipArray tags={this.props.currentPost.tags} />
+          <div id="tag-array">
+            <ChipArray tags={this.props.currentPost.tags} />
+          </div>
           <div className="container">
             <img id="post-img" src={this.props.currentPost.coverUrl} alt="alt-cover-url" />
             <div id="post-content" dangerouslySetInnerHTML={{ __html: marked(this.props.currentPost.content || '') }} />
@@ -188,6 +221,7 @@ class Post extends Component {
 function mapStateToProps(reduxState) {
   return {
     currentPost: reduxState.posts.current,
+    user: reduxState.auth.user,
   };
 }
 

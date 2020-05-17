@@ -3,13 +3,13 @@ import '../style.scss';
 import {
   BrowserRouter as Router,
 } from 'react-router-dom';
-import navBar from './navBar';
+import NavBar from './navBar';
 
 const App = (props) => {
   return (
     <Router>
       <div>
-        {navBar()}
+        <NavBar />
       </div>
     </Router>
   );

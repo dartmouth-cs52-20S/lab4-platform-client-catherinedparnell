@@ -49,7 +49,7 @@ export default function NewsCard({
           heading={title}
           body={summary}
         />
-        <ExpandMoreIcon color="primary" fullWidth className={styles.cta} />
+        <ExpandMoreIcon color="primary" fullwidth="true" className={styles.cta} />
       </CardContent>
     </Card>
   );

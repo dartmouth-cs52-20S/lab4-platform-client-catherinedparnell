@@ -57,16 +57,14 @@ class NewPost extends Component {
   render() {
     return (
       <div className="individual-post-editing" id="new-post">
-        <div className="container">
-          <TextField
-            id="outlined-title-input"
-            label="Title"
-            defaultValue={this.state.title}
-            variant="outlined"
-            onChange={this.onInputChangeTitle}
-          />
-          <DoneIcon className="icon" onClick={this.onClickNewPost} />
-        </div>
+        <div className="post-title">Create</div>
+        <TextField
+          id="outlined-title-input"
+          label="Title"
+          defaultValue={this.state.title}
+          variant="outlined"
+          onChange={this.onInputChangeTitle}
+        />
         <TextField
           id="outlined-url-input"
           label="Cover URL"
@@ -92,13 +90,16 @@ class NewPost extends Component {
           variant="outlined"
           onChange={this.onInputChangeContent}
         />
-        <TextField
-          id="outlined-tag-input"
-          label="Tags"
-          defaultValue={this.state.tags}
-          variant="outlined"
-          onChange={this.onInputChangeTags}
-        />
+        <div className="container">
+          <TextField
+            id="outlined-tag-input"
+            label="Tags"
+            defaultValue={this.state.tags}
+            variant="outlined"
+            onChange={this.onInputChangeTags}
+          />
+          <DoneIcon className="icon" onClick={this.onClickNewPost} />
+        </div>
       </div>
     );
   }

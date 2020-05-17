@@ -18,26 +18,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ChipArray({ tags }) {
+
+export default function ChipArray({ tags, selected }) {
   const classes = useStyles();
   if (!tags) return null;
-  console.log(tags);
-  // const tagset = [...new Set(tags)];
   return (
     <ul className={classes.root}>
       {tags.map((data) => {
-        return (
-          <li>
-            <Chip
-              label={data}
-              className={classes.chip}
-              id="chip"
-              color="primary"
-              component={NavLink}
-              to={`/filter/${data}`}
-            />
-          </li>
-        );
+        if (data === selected) {
+          return (
+            <li>
+              <Chip
+                label={data}
+                className={classes.chip}
+                id="chip"
+                color="primary"
+                component={NavLink}
+                to={`/filter/${data}`}
+              />
+            </li>
+          );
+        } else {
+          return (
+            <li>
+              <Chip
+                label={data}
+                className={classes.chip}
+                id="chip"
+                color="primary"
+                variant="outlined"
+                component={NavLink}
+                to={`/filter/${data}`}
+              />
+            </li>
+          );
+        }
       })}
     </ul>
   );
